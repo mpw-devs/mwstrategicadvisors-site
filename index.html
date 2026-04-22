@@ -4,70 +4,610 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MW Strategic Advisors LLC</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta
+    name="description"
+    content="MW Strategic Advisors LLC helps medtech and product-focused organizations navigate product development, operations, and commercial readiness with practical, execution-focused guidance."
+  />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #eef2f7;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #dbe3ee;
+      --primary: #0f3d91;
+      --primary-dark: #0b2f70;
+      --max-width: 1120px;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(248, 250, 252, 0.92);
+      border-bottom: 1px solid rgba(219, 227, 238, 0.85);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      min-width: 0;
+    }
+
+    .brand-kicker {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .brand-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.15;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 1rem;
+      border-radius: 999px;
+      background: var(--primary);
+      color: white !important;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-cta:hover,
+    .button:hover {
+      background: var(--primary-dark);
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 5rem 0 3.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 3rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      background: #e8eefb;
+      color: var(--primary);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.75rem;
+    }
+
+    .button,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    .button {
+      background: var(--primary);
+      color: white;
+    }
+
+    .button-secondary {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--line);
+    }
+
+    .button-secondary:hover {
+      text-decoration: none;
+      border-color: #b6c3d6;
+      background: var(--surface-alt);
+    }
+
+    .hero-panel {
+      padding: 2rem;
+      background: linear-gradient(180deg, #ffffff 0%, #f5f8ff 100%);
+    }
+
+    .hero-panel h2 {
+      margin: 0 0 1rem;
+      font-size: 1.15rem;
+    }
+
+    .stat-list,
+    .compact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .stat-list li,
+    .compact-list li {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .stat-list li:last-child,
+    .compact-list li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .stat-label {
+      display: block;
+      font-size: 0.86rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .stat-value {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .section {
+      padding: 1.25rem 0 4rem;
+    }
+
+    .section-header {
+      margin-bottom: 1.5rem;
+      max-width: 760px;
+    }
+
+    .section-header h2 {
+      margin: 0 0 0.6rem;
+      font-size: clamp(1.7rem, 2.5vw, 2.5rem);
+      line-height: 1.15;
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .grid-3,
+    .grid-4,
+    .grid-2 {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    .card p,
+    .card li,
+    .about-copy p,
+    .contact-card p {
+      color: var(--muted);
+    }
+
+    .card ul {
+      margin: 0.75rem 0 0;
+      padding-left: 1.2rem;
+    }
+
+    .about {
+      align-items: start;
+    }
+
+    .about-copy,
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .results-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .results-list li {
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #f8fbff;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .contact-link {
+      display: block;
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface-alt);
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    .contact-link span {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+      font-weight: 600;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 1.5rem 0 2.5rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .grid-3,
+      .grid-4,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        gap: 0.9rem;
+      }
+
+      .hero-copy,
+      .hero-panel,
+      .about-copy,
+      .contact-card {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding-top: 3rem;
+      }
+
+      .nav {
+        align-items: flex-start;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .button,
+      .button-secondary,
+      .nav-cta {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
-      <h1>Practical MedTech Advisory for Product Development, Operations, and Commercial Readiness</h1>
-      <p class="subhead">
-        MW Strategic Advisors helps innovators and growing organizations turn promising technologies into executable development, manufacturing, and commercialization plans.
-      </p>
-      <a class="button" href="#contact">Contact</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-kicker">MedTech Advisory</span>
+        <a class="brand-name" href="#top">MW Strategic Advisors LLC</a>
+      </div>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <section class="section">
-      <div class="container">
-        <h2>Services</h2>
-        <ul class="cards">
-          <li>Product Development Strategy</li>
-          <li>Operational and Manufacturing Readiness</li>
-          <li>Commercialization and Market Planning</li>
-          <li>Technical and Strategic Due Diligence</li>
-          <li>Fractional Leadership and Special Projects</li>
-        </ul>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">MW Strategic Advisors LLC</span>
+          <h1>Helping MedTech Teams Turn Innovation Into Executable Plans</h1>
+          <p>
+            MW Strategic Advisors LLC helps innovators and growing organizations navigate product development,
+            operations, manufacturing readiness, and commercial planning with practical, execution-focused guidance.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="mailto:matt@mwstrategicadvisors.com">Email Matt</a>
+            <a class="button-secondary" href="#services">Explore Services</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel" aria-label="Quick highlights">
+          <h2>Why organizations engage MW Strategic Advisors LLC</h2>
+          <ul class="stat-list">
+            <li>
+              <span class="stat-label">Leadership experience</span>
+              <span class="stat-value">20+ years in product development and operations</span>
+            </li>
+            <li>
+              <span class="stat-label">Focus areas</span>
+              <span class="stat-value">MedTech, manufacturing, commercialization, and execution</span>
+            </li>
+            <li>
+              <span class="stat-label">Working style</span>
+              <span class="stat-value">Practical, cross-functional, and grounded in real-world delivery</span>
+            </li>
+          </ul>
+        </aside>
       </div>
     </section>
 
-    <section class="section alt">
+    <section class="section" id="services">
       <div class="container">
-        <h2>About</h2>
-        <p>
-          MW Strategic Advisors LLC was founded by Matt Weber to help medtech and product-focused organizations navigate complex development and execution challenges with clarity, discipline, and practical judgment.
-        </p>
-        <p>
-          Matt brings more than 20 years of experience leading product development, manufacturing, and cross-functional execution. He most recently served as Vice President of R&D and Operations at FlexDex Surgical, where he led multidisciplinary efforts spanning development, manufacturing, intellectual property, and operational readiness.
-        </p>
+        <div class="section-header">
+          <h2>Services</h2>
+          <p>
+            Support tailored for organizations that need clear direction, disciplined execution, and practical judgment.
+          </p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Product Development Strategy</h3>
+            <p>Clarify product direction, requirements, development priorities, and execution plans.</p>
+          </article>
+          <article class="card">
+            <h3>Operational and Manufacturing Readiness</h3>
+            <p>Support scale-up planning, supply chain readiness, manufacturing transfer, and operational alignment.</p>
+          </article>
+          <article class="card">
+            <h3>Commercialization and Market Planning</h3>
+            <p>Help connect technical decisions to customer needs, market realities, and launch priorities.</p>
+          </article>
+          <article class="card">
+            <h3>Technical and Strategic Due Diligence</h3>
+            <p>Assess development plans, risks, operational readiness, and execution credibility.</p>
+          </article>
+          <article class="card">
+            <h3>Fractional Leadership and Special Projects</h3>
+            <p>Interim or project-based leadership for teams that need experienced support to move forward.</p>
+          </article>
+          <article class="card">
+            <h3>Cross-Functional Alignment</h3>
+            <p>Bring structure to complex situations by aligning stakeholders around priorities, risks, and next steps.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <h2>Why Clients Work With MW Strategic Advisors</h2>
-        <ul class="cards">
-          <li>20+ years of leadership in product development and operations</li>
-          <li>Experience in medtech, manufacturing, and commercialization</li>
-          <li>Board, financing, and diligence exposure</li>
-          <li>Practical, execution-focused support</li>
-        </ul>
+    <section class="section" id="about">
+      <div class="container grid-2 about">
+        <div class="about-copy">
+          <div class="section-header">
+            <h2>About</h2>
+          </div>
+          <p>
+            MW Strategic Advisors LLC was founded by Matt Weber to help medtech and product-focused organizations
+            navigate complex development and execution challenges with clarity, discipline, and practical judgment.
+          </p>
+          <p>
+            Matt brings more than 20 years of experience leading product development, manufacturing, and cross-functional
+            execution. He most recently served as Vice President of R&amp;D and Operations at FlexDex Surgical, where he led
+            multidisciplinary efforts spanning development, manufacturing, intellectual property, and operational readiness.
+          </p>
+          <p>
+            His background includes product launches, manufacturing scale-up, commercialization planning, board-level
+            communication, and participation in financing and diligence-related activities.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Core strengths</h3>
+          <ul class="compact-list">
+            <li>Product development and commercialization guidance</li>
+            <li>Operations and manufacturing leadership</li>
+            <li>Cross-functional execution across technical and business teams</li>
+            <li>Board, investor, and stakeholder communication</li>
+            <li>Practical problem-solving in complex environments</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section class="section alt" id="contact">
+    <section class="section" id="experience">
       <div class="container">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:mpweber@gmail.com">mpweber@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/mattweberpmp/" target="_blank">linkedin.com/in/mattweberpmp/</a></p>
+        <div class="section-header">
+          <h2>Selected experience</h2>
+          <p>Representative outcomes and experience areas that inform the work of MW Strategic Advisors LLC.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <ul class="results-list">
+              <li>Supported work that contributed to a $13M strategic investment.</li>
+              <li>Helped build and align cross-functional teams supporting complex medical device programs.</li>
+              <li>Expanded operations from early-stage activity to greater manufacturing readiness.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <ul class="results-list">
+              <li>Led development efforts tied to products associated with significant commercial revenue.</li>
+              <li>Experience spanning product development, operations, IP, commercialization, and execution planning.</li>
+              <li>Grounded, hands-on approach with the ability to connect strategic priorities to day-to-day work.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2>Contact</h2>
+          <p>
+            If you would like to discuss an opportunity, advisory engagement, or a specific challenge, please reach out.
+          </p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:matt@mwstrategicadvisors.com">
+              <span>Email</span>
+              matt@mwstrategicadvisors.com
+            </a>
+            <a class="contact-link" href="https://www.linkedin.com/in/mattweberpmp/" target="_blank" rel="noreferrer">
+              <span>LinkedIn</span>
+              linkedin.com/in/mattweberpmp/
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="container">
-      <p>© 2026 MW Strategic Advisors LLC</p>
+      <p>&copy; 2026 MW Strategic Advisors LLC. All rights reserved.</p>
     </div>
   </footer>
 </body>
 </html>
+
